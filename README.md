@@ -2,34 +2,23 @@
 
 A jailbreak tweak that redirects Safari URL opens to [Reynard](https://github.com/minh-ton/reynard-browser), a Firefox-based browser for iOS.
 
-When enabled, any link that would normally open in Safari is intercepted at the SpringBoard level and opened in Reynard instead.
+Any link that would normally open in Safari is intercepted at the SpringBoard level and opened in Reynard instead. There is no switch: it is always on.
 
 ## Features
 
 - **Safari redirect** — hooks `FBSystemServiceOpenApplicationRequest` in SpringBoard to swap the bundle identifier
-- **Settings toggle** — enable/disable from Settings via PreferenceLoader
-- **Control Centre toggle** — quick toggle via CCSupport module
 
 ## Requirements
 
 - A jailbroken iOS device — supports **rootless** (Dopamine/Roothide) and **rootful** (unc0ver, palera1n rootful)
 - [Reynard](https://github.com/minh-ton/reynard-browser) browser installed
-- [CCSupport](https://moreinfo.thebigboss.org/moreinfo/depiction.php?file=ccsupportDp) (for Control Centre toggle)
-- [PreferenceLoader](https://github.com/PoomSmart/PreferenceLoader) (for Settings pane)
 
 ## Building
 
-Requires [Theos](https://theos.dev/).
-
-```bash
-export THEOS=~/theos
-cd ReynardDefault
-make rootless   # Dopamine / Roothide
-make rootful    # unc0ver / palera1n rootful
-make both       # builds both variants side-by-side
-```
-
-Builds land in `packages/` as `*_iphoneos-arm64.deb` (rootless) and `*_iphoneos-arm.deb` (rootful). Rootless debs installed via Sileo on Roothide are auto-patched; manual installs need the Roothide Patcher app first.
+The source is plain Objective-C (no Logos): `Tweak.m`, built on the device by
+`apelin/build.sh` (Apelin workspace project) with the iOS toolchain and
+packaged with `dpkg-deb`. It builds `iphoneos-arm64e` for roothide, or
+`iphoneos-arm64` for rootless, and writes a single deb.
 
 ## Tested Environments
 

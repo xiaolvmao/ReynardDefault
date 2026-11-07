@@ -1,12 +1,8 @@
-#if __has_include(<rootless.h>)
-#import <rootless.h>
-#define jbRootPath(path) ROOT_PATH_NS(path)
-#else
-#define jbRootPath(path) (path)
-#endif
+#pragma once
 
-static NSString *const kSuiteName = @"com.guacforlife.reynarddefaultprefs";
-static NSString *const kEnabledKey = @"enabled";
+#import <Foundation/Foundation.h>
+#import "ApelinBootstrap.h"
 
-@interface NSDistributedNotificationCenter : NSNotificationCenter
-@end
+// On roothide the bootstrap is not at /, so a bootstrap path goes through
+// ApelinBootstrapPath (jbroot at run time), never a literal.
+#define jbRootPath(path) ApelinBootstrapPath(path)
