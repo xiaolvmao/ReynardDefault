@@ -4,6 +4,12 @@ A jailbreak tweak that redirects Safari URL opens to [Reynard](https://github.co
 
 Any link that would normally open in Safari is intercepted at the SpringBoard level and opened in Reynard instead. There is no switch: it is always on.
 
+> **This is a modified version of [guacforlife/ReynardDefault](https://github.com/guacforlife/ReynardDefault).**
+> The original tweak is by [guacforlife](https://github.com/guacforlife); this copy is
+> maintained by [xiaolvmao](https://github.com/xiaolvmao) and differs as described in
+> [What changed in 1.5.0](#what-changed-in-150) below. It is not affiliated with or
+> endorsed by the original author. Licensed under the GPL-3.0, like the original.
+
 ## Features
 
 - **Safari redirect** — hooks `FBSystemServiceOpenApplicationRequest` in SpringBoard to swap the bundle identifier
